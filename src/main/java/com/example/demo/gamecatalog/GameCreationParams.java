@@ -1,16 +1,16 @@
 package com.example.demo.gamecatalog;
 
 public class GameCreationParams {
-    String type;
+    String typeOfGame;
     int playCount;
     int boardSize;
 
     public String getType() {
-        return type;
+        return typeOfGame;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.typeOfGame = type;
     }
 
     public int getPlayCount() {

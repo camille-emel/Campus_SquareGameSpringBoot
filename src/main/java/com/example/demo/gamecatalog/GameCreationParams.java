@@ -2,7 +2,7 @@ package com.example.demo.gamecatalog;
 
 public class GameCreationParams {
     String typeOfGame;
-    int playCount;
+    int playerCount;
     int boardSize;
 
     public String getType() {
@@ -13,12 +13,12 @@ public class GameCreationParams {
         this.typeOfGame = type;
     }
 
-    public int getPlayCount() {
-        return playCount;
+    public int getPlayerCount() {
+        return playerCount;
     }
 
-    public void setPlayCount(int playCount) {
-        this.playCount = playCount;
+    public void setPlayerCount(int playCount) {
+        this.playerCount = playCount;
     }
 
     public int getBoardSize() {
@@ -28,5 +28,6 @@ public class GameCreationParams {
     public void setBoardSize(int boardSize) {
         this.boardSize = boardSize;
     }
+
 
 }

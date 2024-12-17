@@ -2,9 +2,12 @@ package com.example.demo.gamecatalog;
 
 import fr.le_campus_numerique.square_games.engine.Game;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.UUID;
 //decoration de la class pour indiquer qu'elle expose des endpoints REST
 @RestController
@@ -23,7 +26,20 @@ public class GameController {
     }
 
     @GetMapping("/{gameId}")
-    public Game getGame(@PathVariable String gameId) {
+    public Game getGame(@PathVariable int gameId) {
+        if (gameService.getGame(gameId) == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         return gameService.getGame(gameId);
+    }
+    @GetMapping("/all")
+    public List<Game> getAllGames() {
+        return gameService.getGames();
+    }
+    @DeleteMapping("/{gameId}")
+    public void deleteGame(@PathVariable int gameId) {
+        if (gameService.deleteGame(gameId) == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 }

@@ -15,9 +15,10 @@ public class GameController {
     public GameController(GameService gameService) {
         this.gameService = gameService;
     }
-
+    //Pour une création de ressource, on utilise la méthode HTTP POST
+    //Code engine -> @NotNull Game createGame(int playerCount, int boardSize);
     @PostMapping
-    public String createGame(@RequestBody GameCreationParams params) {
+    public Game createGame(@RequestBody GameCreationParams params) {
         return gameService.createGame(params);
     }
 
@@ -25,5 +26,4 @@ public class GameController {
     public Game getGame(@PathVariable String gameId) {
         return gameService.getGame(gameId);
     }
-
 }

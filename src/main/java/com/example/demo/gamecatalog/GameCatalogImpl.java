@@ -1,6 +1,6 @@
 package com.example.demo.gamecatalog;
 
-import fr.le_campus_numerique.square_games.engine.Game;
+import fr.le_campus_numerique.square_games.engine.GameFactory;
 import fr.le_campus_numerique.square_games.engine.connectfour.ConnectFourGameFactory;
 import fr.le_campus_numerique.square_games.engine.taquin.TaquinGameFactory;
 import fr.le_campus_numerique.square_games.engine.tictactoe.TicTacToeGameFactory;
@@ -17,11 +17,21 @@ public class GameCatalogImpl implements GameCatalog {
 
 
     @Override
-    public Collection<String> getGameIdentifiers() {
+    public Collection<String> getGamesIdentifiers() {
         return List.of(ticTacToeGameFactory.getGameFactoryId(),
                 taquinFactory.getGameFactoryId(),
                 connectFactory.getGameFactoryId());
 
 
+    }
+
+    @Override
+    public GameFactory getFactory(String Id) {
+        return switch (Id) {
+            case "TicTacToe" -> ticTacToeGameFactory;
+            case "Taquin" -> taquinFactory;
+            case "ConnectFour" -> connectFactory;
+            default -> null;
+        };
     }
 }

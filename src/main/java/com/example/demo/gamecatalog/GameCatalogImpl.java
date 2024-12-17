@@ -26,12 +26,12 @@ public class GameCatalogImpl implements GameCatalog {
     }
 
     @Override
-    public GameFactory getFactory(String Id) {
-        return switch (Id) {
-            case "TicTacToe" -> ticTacToeGameFactory;
-            case "Taquin" -> taquinFactory;
-            case "ConnectFour" -> connectFactory;
-            default -> null;
-        };
+    public GameFactory getFactory(String gameIdentifier) {
+        switch (gameIdentifier) {
+            case "TicTacToe" : return ticTacToeGameFactory;
+            case "Taquin" : return taquinFactory;
+            case "ConnectFour" : return connectFactory;
+        }
+        return null;
     }
 }

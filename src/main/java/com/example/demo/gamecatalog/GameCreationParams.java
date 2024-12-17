@@ -1,33 +1,22 @@
 package com.example.demo.gamecatalog;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 public class GameCreationParams {
-    String typeOfGame;
+    String gameIdentifier;
     int playerCount;
     int boardSize;
 
-    public String getType() {
-        return typeOfGame;
+    public @NotBlank String getGameIdentifier() {
+        return gameIdentifier;
     }
 
-    public void setType(String type) {
-        this.typeOfGame = type;
-    }
-
-    public int getPlayerCount() {
+    public @Min(1) int getPlayerCount() {
         return playerCount;
-    }
-
-    public void setPlayerCount(int playCount) {
-        this.playerCount = playCount;
     }
 
     public int getBoardSize() {
         return boardSize;
     }
-
-    public void setBoardSize(int boardSize) {
-        this.boardSize = boardSize;
-    }
-
-
 }

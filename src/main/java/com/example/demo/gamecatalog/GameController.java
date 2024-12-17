@@ -4,6 +4,7 @@ import fr.le_campus_numerique.square_games.engine.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -21,16 +22,18 @@ public class GameController {
     //Pour une création de ressource, on utilise la méthode HTTP POST
     //Code engine -> @NotNull Game createGame(int playerCount, int boardSize);
     @PostMapping
-    public Game createGame(@RequestBody GameCreationParams params) {
+    public Game createGame(@RequestBody @Validated GameCreationParams params) {
         return gameService.createGame(params);
     }
 
     @GetMapping("/{gameId}")
     public Game getGame(@PathVariable int gameId) {
-        if (gameService.getGame(gameId) == null) {
+        try {
+            return gameService.getGame(gameId);
+        }
+        catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        return gameService.getGame(gameId);
     }
     @GetMapping("/all")
     public List<Game> getAllGames() {

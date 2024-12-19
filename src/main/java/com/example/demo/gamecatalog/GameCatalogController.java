@@ -11,7 +11,7 @@ public class GameCatalogController {
     @Autowired
     private GameCatalog gameCatalog;
 
-    @GetMapping("/games/alll")
+    @GetMapping("/games/catalog")
     public Collection<String> getGames() {
        return gameCatalog.getGamesIdentifiers();
     }

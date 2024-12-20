@@ -13,13 +13,15 @@ public class GameCatalogController {
     @Autowired
     private GameCatalog gameCatalog;
 
+
     @GetMapping("/games/catalog")
-    public Collection<?> getGames(Locale locale) {
+    //??wtf is this i dont get it???
+    public Collection<Map<String, String>> getGames(Locale locale) {
         return this.gameCatalog.getPlugins().stream()
-                .map(plugin-> Map.of(
-                        "id","",
-                        "name",plugin.getName(locale)
-                        ))
+                .map(plugin -> Map.of(
+                        "id", plugin.getClass().getSimpleName().toLowerCase().replace("plugin", ""),
+                        "name", plugin.getName(locale)
+                ))
                 .toList();
     }
 }

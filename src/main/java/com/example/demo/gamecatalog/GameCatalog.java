@@ -7,5 +7,5 @@ import java.util.Collection;
 //permettant de récupérer la liste des identiants des jeux d
 public interface GameCatalog {
     Collection<GamePlugin> getPlugins();
-    GameFactory getFactory(String Id);
+    GameFactory getFactory(String gameIdentifier);
 }

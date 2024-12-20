@@ -10,7 +10,10 @@ import java.util.OptionalInt;
 public interface GamePlugin {
     @NotBlank 
     String getName(Locale locale);
-    
+    String getGameIdentifier();
+
     @NotNull 
     Game createGame(OptionalInt playerCount, OptionalInt boardSize);
+
+
 }

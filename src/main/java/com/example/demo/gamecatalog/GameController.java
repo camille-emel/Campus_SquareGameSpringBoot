@@ -18,12 +18,12 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @PostMapping
-    public Game createGame(@RequestBody @Validated GameCreationParams params) {
+    @PostMapping("/")
+    public Game createGame(@RequestBody GameCreationParams params) {
         return gameService.createGame(params);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Game> getAllGames() {
         return gameService.getGames();
     }

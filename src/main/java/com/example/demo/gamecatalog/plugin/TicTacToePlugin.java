@@ -30,6 +30,11 @@ public class TicTacToePlugin implements GamePlugin {
     }
 
     @Override
+    public String getGameIdentifier() {
+        return "TicTacToe";
+    }
+
+    @Override
     public Game createGame(OptionalInt playerCount, OptionalInt boardSize) {
         int finalPlayerCount = playerCount.orElse(defaultPlayerCount);
         int finalBoardSize = boardSize.orElse(defaultBoardSize);

@@ -15,7 +15,7 @@ public class GameCatalogController {
 
 
     @GetMapping("/games/catalog")
-    //??wtf is this i dont get it???
+    //??wtf is this, I dont get it???
     public Collection<Map<String, String>> getGames(Locale locale) {
         return this.gameCatalog.getPlugins().stream()
                 .map(plugin -> Map.of(

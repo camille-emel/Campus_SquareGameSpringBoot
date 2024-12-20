@@ -30,6 +30,11 @@ public class ConnectFourPlugin implements GamePlugin {
     }
 
     @Override
+    public String getGameIdentifier() {
+        return "ConnectFour";
+    }
+
+    @Override
     public Game createGame(OptionalInt playerCount, OptionalInt boardSize) {
         int finalPlayerCount = playerCount.orElse(defaultPlayerCount);
         int finalBoardSize = boardSize.orElse(defaultBoardSize);

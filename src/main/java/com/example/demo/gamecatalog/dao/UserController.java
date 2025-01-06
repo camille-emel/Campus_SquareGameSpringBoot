@@ -35,4 +35,31 @@ public class UserController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable int id, @RequestBody GameUser user) {
+        // Associer l'ID de la route à l'objet GameUser
+        user.setId(id);
+
+        // Appeler la méthode DAO pour mettre à jour l'utilisateur
+        boolean isUpdated = userDAO.updateUser(user);
+
+        if (isUpdated) {
+            return ResponseEntity.ok("Utilisateur mis à jour avec succès !");
+        } else {
+            return ResponseEntity.status(404).body("Aucun utilisateur trouvé avec l'ID spécifié.");
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable int id) {
+        boolean isDeleted = userDAO.deleteUser(id);
+
+        if (isDeleted) {
+            return ResponseEntity.ok("Utilisateur supprimé avec succès !");
+        } else {
+            return ResponseEntity.status(404).body("Aucun utilisateur trouvé avec l'ID spécifié.");
+        }
+    }
+
+
 }

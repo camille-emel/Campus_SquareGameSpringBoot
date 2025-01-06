@@ -86,12 +86,53 @@ public class MySQLUserDAO implements UserDAO {
 
 
     @Override
-    public void updateUser(GameUser user) {
+    public boolean updateUser(GameUser user) {
+        String query = "UPDATE USERS SET name = ?, email = ? WHERE id = ?";
 
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            // Définir les paramètres
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setInt(3, user.getId());
+
+            // Exécuter la requête
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Retourne true si une ou plusieurs lignes ont été affectées
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Retourne false en cas d'erreur ou si aucun utilisateur n'a été trouvé
+        return false;
     }
 
     @Override
-    public void deleteUser(int id) {
+    public boolean deleteUser(int id) {
+        String query = "DELETE FROM USERS WHERE id = ?";
 
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            // Définir le paramètre (ID de l'utilisateur à supprimer)
+            preparedStatement.setInt(1, id);
+
+            // Exécuter la requête
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Retourne true si une ou plusieurs lignes ont été affectées
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Retourne false en cas d'erreur ou si aucun utilisateur n'a été supprimé
+        return false;
     }
+
 }

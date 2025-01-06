@@ -12,19 +12,19 @@ public class DatabaseConnection {
     }
 
     public static Connection getConnection() {
-        if (connection == null) {
-            try {
+        try {
+            if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/square_games",
+                        "jdbc:mysql://localhost:3306/square_games?useSSL=false&serverTimezone=UTC",
                         "root",
                         "root"
-
                 );
-            } catch (SQLException e) {
-                e.printStackTrace();
-                throw new RuntimeException("Erreur de connexion");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Erreur de connexion à la base de données");
         }
         return connection;
     }
+
 }

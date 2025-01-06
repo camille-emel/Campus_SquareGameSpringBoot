@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserDAO {
     public List<GameUser> getAllUsers();
     public GameUser getUserById(int id);
-    public void addUser(GameUser user);
+    public boolean addUser(GameUser user);
     public void updateUser(GameUser user);
     public void deleteUser(int id);
 }

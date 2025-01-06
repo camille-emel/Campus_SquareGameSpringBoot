@@ -61,9 +61,29 @@ public class MySQLUserDAO implements UserDAO {
 
 
     @Override
-    public void addUser(GameUser user) {
+    public boolean addUser(GameUser user) {
+        String query = "INSERT INTO USERS (name, email) VALUES (?, ?)";
 
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            // Définir les paramètres
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+
+            // Exécuter la requête
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Retourne true si l'utilisateur a été ajouté avec succès
+            return rowsAffected > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // Retourne false en cas d'échec
+        }
     }
+
+
 
     @Override
     public void updateUser(GameUser user) {

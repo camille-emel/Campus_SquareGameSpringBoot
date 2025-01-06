@@ -1,5 +1,6 @@
 package com.example.demo.gamecatalog;
 
+import com.example.demo.gamecatalog.dao.MySQLUserDAO;
 import com.example.demo.gamecatalog.plugin.GamePlugin;
 import fr.le_campus_numerique.square_games.engine.Game;
 import fr.le_campus_numerique.square_games.engine.GameFactory;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @Service
 public class GameServiceImpl implements GameService {
+
 
     @Autowired
     GameCatalog gameCatalog;

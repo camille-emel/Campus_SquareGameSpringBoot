@@ -5,9 +5,9 @@ import org.apache.catalina.User;
 import java.util.List;
 
 public interface UserDAO {
-    public List<User> getAllUsers();
-    public User getUserById(int id);
-    public void addUser(User user);
-    public void updateUser(User user);
+    public List<GameUser> getAllUsers();
+    public GameUser getUserById(int id);
+    public void addUser(GameUser user);
+    public void updateUser(GameUser user);
     public void deleteUser(int id);
 }

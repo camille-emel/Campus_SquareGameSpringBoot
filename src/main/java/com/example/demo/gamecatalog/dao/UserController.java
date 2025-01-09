@@ -13,12 +13,14 @@ import java.util.Optional;
 @RequestMapping("/users")
 
 public class UserController {
-    private final UserRepository userRepository;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private  UserRepository userRepository;
+
+//    @Autowired
+//    public UserController(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 //    private final MySQLUserDAO userDAO = new MySQLUserDAO();
 
     @GetMapping("/")

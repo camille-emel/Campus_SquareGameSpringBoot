@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class GameUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private int id;
     private String name;
     private String email;

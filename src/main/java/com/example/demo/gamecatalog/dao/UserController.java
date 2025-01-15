@@ -1,6 +1,5 @@
 package com.example.demo.gamecatalog.dao;
 
-import com.example.demo.gamecatalog.dao.GameUser;
 //import com.example.demo.gamecatalog.dao.MySQLUserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +39,7 @@ public class UserController {
             GameUser existingUser = existingUserOptional.get();
 
             // Mettre à jour les champs
-            existingUser.setName(user.getName());
+            existingUser.setUsername(user.getUsername());
             existingUser.setEmail(user.getEmail());
 
             // Enregistrer les modifications

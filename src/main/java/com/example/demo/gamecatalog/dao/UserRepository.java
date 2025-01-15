@@ -10,6 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<GameUser, Long> {
-    List<GameUser> findByName(String name);
     List<GameUser> findByEmail(String email);
+    Optional<GameUser> findByUsername(String username);
 }

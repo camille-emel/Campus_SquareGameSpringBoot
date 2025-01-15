@@ -9,19 +9,39 @@ public class GameUser {
     @GeneratedValue
     private int id;
     @Column(nullable = false, unique = true)
-    private String name;
+    private String username;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
+    private String password;
+    @Column(nullable = false)
+    private String roles;
 
     protected GameUser(){}
 
-    public GameUser(int id, String name, String email) {
+    public GameUser(int id, String username, String email) {
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.email = email;
     }
+    public String getPassword() {
+        return password;
+    }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public void setEmail(String email) {
@@ -32,8 +52,8 @@ public class GameUser {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     public String getEmail() {
